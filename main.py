@@ -2,27 +2,27 @@ import requests
 import webbrowser
 import time
 
-# Twitch APIİ’è
-client_id = '‚±‚±‚ÉƒNƒ‰ƒCƒAƒ“ƒgID‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢'
-access_token = '‚±‚±‚ÉƒAƒNƒZƒXƒg[ƒNƒ“‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢'
+# Twitch APIè¨­å®š
+client_id = 'ã“ã“ã«ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆIDã‚’å…¥åŠ›ã—ã¦ãã ã•ã„'
+access_token = 'ã“ã“ã«ã‚¢ã‚¯ã‚»ã‚¹ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„'
 streamer_username_yuyu = 'yuyuta0702'
-streamer_username_katou = 'kato_junichi0817'  # ‚±‚±‚ÉD‚«‚È”zMÒ‚Ìƒ†[ƒU[–¼‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢
+streamer_username_katou = 'kato_junichi0817'  # ã“ã“ã«å¥½ããªé…ä¿¡è€…ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„
 
-# Twitch”zMÒ‚Ìƒy[ƒWURL
+# Twitché…ä¿¡è€…ã®ãƒšãƒ¼ã‚¸URL
 stream_url_yuyu = f'https://www.twitch.tv/{streamer_username_yuyu}'
 stream_url_katou = f'https://www.twitch.tv/{streamer_username_katou}'
 
-# API‚ÌURL
+# APIã®URL
 url_yuyu = f'https://api.twitch.tv/helix/streams?user_login={streamer_username_yuyu}'
 url_katou = f'https://api.twitch.tv/helix/streams?user_login={streamer_username_katou}'
 
-# ƒwƒbƒ_[î•ñ
+# ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±
 headers = {
     'Client-ID': client_id,
     'Authorization': f'Bearer {access_token}'
 }
 
-# ”zMÒ‚ªƒIƒ“ƒ‰ƒCƒ“‚©ƒ`ƒFƒbƒN‚·‚éŠÖ”
+# é…ä¿¡è€…ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–¢æ•°
 def check_streamer_online_yuyu():
     response = requests.get(url_yuyu, headers=headers).json()
     return bool(response['data'])
@@ -31,7 +31,7 @@ def check_streamer_online_katou():
     response = requests.get(url_katou, headers=headers).json()
     return bool(response['data'])
 
-# ”zMÒ‚Ìó‘Ô‚ğƒ|[ƒŠƒ“ƒO‚·‚é
+# é…ä¿¡è€…ã®çŠ¶æ…‹ã‚’ãƒãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹
 while True:
     if check_streamer_online_yuyu():
         print(f"{streamer_username_yuyu} is streaming now! Opening in browser.")
@@ -43,4 +43,4 @@ while True:
         break
     else:
         print(f"{streamer_username_yuyu, streamer_username_katou} is not streaming. Checking again in 180 seconds.")
-        time.sleep(180)  # 180•b‘Ò‚Á‚ÄÄƒ`ƒFƒbƒN
+        time.sleep(180)  # 180ç§’å¾…ã£ã¦å†ãƒã‚§ãƒƒã‚¯
